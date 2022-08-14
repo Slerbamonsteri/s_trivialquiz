@@ -58,8 +58,8 @@ RegisterServerEvent('s_quiz:broadcast', function() --Only server should call thi
             })
         end
     end
-    while tonumber(timer) >= tonumber(NewQuestion) do --Should automatically loop this shit
-        timer = timer - (minute / 60000)
+    while tonumber(timer) >= 0 do --Should automatically loop this shit
+        timer = timer - 1
         Wait(minute)
         if timer == 0 then
             currentAnswer = nil
