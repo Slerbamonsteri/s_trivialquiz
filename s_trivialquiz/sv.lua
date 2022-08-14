@@ -7,14 +7,6 @@ local quizAnswered = false
 local secret = ''
 
 
-TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-
-CreateThread(function()
-    local token = 'ipfgdjn'..math.random(1,43556)..'dgfdfg' --Let's create some security for our payout event !
-    secret = token
-    TriggerEvent('s_quiz:broadcast')
-end)
-
 ----#### CONFIGURATION ####----
 local CommandName = 'entercommandhere' --Add your wanted command here which should be used to answer in quiz
 local NewQuestion = 10 --How often should new quiz be broadcast to players (in minutes)
@@ -39,6 +31,15 @@ end)
 
 
 --#### CONFIGURATION ENDS ####----
+
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+
+CreateThread(function()
+    local token = 'ipfgdjn'..math.random(1,43556)..'dgfdfg' --Let's create some security for our payout event !
+    secret = token
+    Wait(1000) --Lets give some time just incase.
+    TriggerEvent('s_quiz:broadcast')
+end)
 
 
 RegisterServerEvent('s_quiz:broadcast', function() --Only server should call this (Refreshes question)
